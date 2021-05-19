@@ -5,8 +5,9 @@
     <title>Writers Block</title>
     <link rel="icon" href="images/writerblocklogo.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Raleway&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/6ffe9012a7.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Raleway&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css">
 
   </head>
@@ -17,9 +18,21 @@
       </header>
     </div>
 
-    <div class="date">
-      
+    <div class="date-section">
+      <h1 class ="date"><%= currentDay %></h1>
+    </div>
 
+    <div class ="prompt-section">
+      <h1>A stranger sits down next to you on a train and gets up, leaving a package behind. Do you investigate the package?</h1>
+    </div>
+
+
+    <div class="writing-area">
+      <form class="" action="index.html" method="post">
+        <input class = "entry-title" type="text" name="" value="" required placeholder="Title">
+        <textarea class= "entry"name="name" rows="25" cols="95" required placeholder="Don't think too much, just start..."></textarea>
+        <button class = "finish-button" type="button" name="button"><b>Finish</b></button>
+      </form>
     </div>
 
   </body>

@@ -15,3 +15,84 @@ header{
   padding: 2px 48px;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.3)
 }
+
+.date-section{
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.date{
+  background-color: #7c9473;
+  display: block;
+  color: #fff;
+  padding: 2rem 0;
+  width: 25rem;
+  margin-left: 40%;
+  border-radius: 2rem;
+}
+
+.prompt-section{
+  padding: 1rem 25rem;
+  margin: 0 4rem;
+  text-align: center;
+}
+
+.entry-title{
+  font-size: 1rem;
+  padding-left: 1rem;
+  display: block;
+  margin: 1rem auto;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+  height: 3rem;
+  width: 51rem;
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+
+}
+
+.entry-title:focus{
+  outline: none;
+  box-shadow: 0 0 3pt 2pt #7c9473;
+  font-size: 1rem;
+}
+
+.finish-button{
+  margin: 2rem 0 0 83rem;
+  background-color:#7c9473;
+  color: #fff;
+  width: 6rem;
+  height: 2.5rem;
+  border-style: none;
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  border-radius: .5rem;
+  font-size: 1rem;
+
+
+}
+
+
+
+.entry{
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  display: block;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+  border-radius: 1rem;
+  border-style: solid;
+  border-color:black;
+  padding: 2rem;
+
+}
+
+.entry:focus{
+  outline: none;
+  box-shadow: 0 0 3pt 2pt #7c9473;
+  padding: 2rem;
+}
