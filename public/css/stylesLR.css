@@ -1,0 +1,226 @@
+html{
+  height: 100%;
+  padding: 0;
+}
+body{
+  /* background-image: url("https://www.transparenttextures.com/patterns/cartographer.png"); */
+
+  background-color: #7c9473;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  height: 100%;
+}
+.title{
+  margin: auto;
+  font-size: 5rem;
+  font-family: 'Berkshire Swash', cursive;
+  color: #fff;
+  margin-top: 35%;
+  display: block;
+
+
+}
+.title i {
+  color: black;
+}
+/*
+.container{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -15rem;
+  margin-left: -12rem;
+  width: 25rem;
+  height: 30rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 3pt 2pt #7c9473;
+} */
+
+p{
+  display: block;
+  font-size: 1.5rem;
+  color: #fff;
+  letter-spacing: .1rem;
+}
+
+
+
+/* practing half and half */
+
+.big-container{
+  width: 50%;
+  height: 100%;
+  /* padding-bottom: 35%; */
+
+
+
+
+}
+
+.container-left{
+  height: 100%;
+  float: left;
+  color: #fff;
+  background-color: #7c9473;
+    background-image: url("https://www.transparenttextures.com/patterns/lined-paper.png");
+}
+
+.container-right{
+  height: 100%;
+  float: right;
+  color: #7c9473;
+  background-color: #fff;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+}
+
+.container{
+   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  margin-top: 30%;
+  text-align: center;
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
+  margin-left: auto;
+  margin-right: auto;
+  width:30rem;
+  height: 35rem;
+  border-radius: 2rem;
+  padding-top:3rem;
+}
+
+
+/* end */
+
+
+
+
+.entry{
+  font-size: 1.5rem;
+  padding-left: 1rem;
+  display: block;
+  margin: 1rem 2rem;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+  height: 3.5rem;
+  width: 25rem;
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: #7c9473;
+  border-width: thin;
+
+}
+.entry:focus{
+  outline: none;
+  box-shadow: 0 0 3pt 3pt #7c9473
+
+}
+
+.signin-button{
+  background-color:#7c9473;
+  color: #fff;
+  width: 6rem;
+  height: 2.5rem;
+  display: inline-block;
+  border-style: none;
+  border-width: thin;
+  font-family: 'Raleway', sans-serif;
+  border-radius: .5rem;
+  font-size: 1rem;
+ margin-bottom: 2rem;
+  /* margin-top: 1rem; */
+  margin-left: 10rem;
+}
+
+.reg-button{
+/* padding: 1rem; */
+text-decoration: none;
+text-align: center;
+border-style: solid;
+border-width: thin;
+color: #fff;
+background-color: #7c9473;
+padding: .65rem 1.5rem;
+border-radius: .5rem;
+margin-left: .5rem;
+}
+.reg-button:hover{
+  color:#7c9473;
+  background: #fff;
+  border-style: solid;
+  border-width: thin;
+  border-color: #7c9473;
+
+}
+
+
+
+.signin-button:hover{
+  color:#7c9473;
+  background: #fff;
+  border-style: solid;
+  border-width: thin;
+  border-color: #7c9473;
+}
+/*
+.g-fb-login{
+  float:none;
+  margin-left: 5rem; */
+/* } */
+.reg{
+  margin-left: 3rem;
+  display: block;
+}
+
+.login-text{
+  font-size: 3rem;
+  font-family: 'Berkshire Swash', cursive;
+}
+
+
+
+.website-button{
+  font-size: 2rem;
+  /* padding-left: 1rem; */
+  display: block;
+  margin: 1rem 2rem;
+  /* align-items: center; */
+  font-family: 'Raleway', sans-serif;
+  height: 3rem;
+  width: 25rem;
+  border-radius: 1rem;
+  border-style: solid;
+  border-width: thin;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+  padding-top: 1.5rem;
+
+
+}
+
+.fb-button{
+  border-color: #4267B2;
+  color:#4267B2;
+
+
+}
+
+.fb-button:hover{
+  background-color: #4267B2;
+  color:#fff;
+
+}
+
+.google-button{
+  border-color: #de5246;
+  color: #de5246;
+  margin-bottom: .5
+
+}
+.google-button:hover{
+  background-color: #de5246;
+  border-color: #fff;
+  color: #fff;
+}

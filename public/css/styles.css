@@ -2,7 +2,7 @@ body{
   background-color: #fff;
   margin: 0;
   font-family: 'Raleway', sans-serif;
-   background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
 }
 
 .title{
@@ -27,7 +27,7 @@ header{
   color: #fff;
   padding: 2rem 0;
   width: 25rem;
-  margin-left: 40%;
+  margin:auto;
   border-radius: 2rem;
 }
 
@@ -70,7 +70,6 @@ header{
   font-family: 'Raleway', sans-serif;
   border-radius: .5rem;
   font-size: 1rem;
-
 
 }
 
