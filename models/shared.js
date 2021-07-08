@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 // const conn = mongoose.createConnection('mongodb://localhost:27017/writingDB', {useNewUrlParser:true,useUnifiedTopology:true});
 
-const promptSchema = new mongoose.Schema({
-  category: String,
-  prompt:String
+const sharedSchema = new mongoose.Schema({
+  user: String,
+  date: String,
+  title: String,
+  content: String
 });
-
 
 const myDB = mongoose.connection.useDb('writingDB');
 
-const Prompt = myDB.model('Prompt', promptSchema);
+const Shared = myDB.model('Shared', sharedSchema);
 
-
-module.exports =  Prompt;
+module.exports = Shared;

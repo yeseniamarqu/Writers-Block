@@ -1,11 +1,41 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+  <%-include('partials/header')-%>
+    <link rel="stylesheet" href="css/stylesDashboard.css">
+
   </head>
   <body>
-    <h1>hello</h1>
+
+
+<nav class="left-side">
+  <div class="nav-bar-items">
+
+ <a class= "start-button"href="/index">Start</a>
+ <a class ="nav-item" href="#">Past Writings</a>
+ <a class ="nav-item"href="">Journal</a>
+
+  </div>
+
+
+</nav>
+<nav class = "top">
+  <h1 class="name"><i class="fas fa-cubes"></i>WritersBlock</h1>
+  <a href="#">Logout</a>
+</nav>
+<div class="right-side">
+  <div class="feed">
+
+
+<% writings.forEach(function(writing){ %>
+  <div class="shared-writing">
+    <h1><%=writing.title%></h1>
+    <p><%=writing.user%></p>
+    <p><%=writing.content%></p>
+    <p><%=writing.date%></p>
+  </div>
+<%})%>
+
+  </div>
+</div>
+
   </body>
 </html>
 
