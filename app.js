@@ -5,6 +5,7 @@ const ObjectID = require('mongodb')
 const ejs = require('ejs');
 const app = express();
 const {
+  Journal,
   Prompt,
   Shared
 } = require("./models")
@@ -322,26 +323,28 @@ app.post("/view",function(req,res){
 
 
 app.post("/index", function(req, res) {
-  const userWriting = {
-    _id: 0,
+  const newEntry = new Journal({
     title: req.body.writingTitle,
     content: req.body.writingContent,
-    date: day
-  };
+    date: today,
+    author: userId
+  });
 
-  User.updateOne({_id:
-     userId
-  }, {
-    $push: {
-      "writings" : userWriting
-      }
-    },function(err){
-      if(err)
-{
-  console.log(err);
-}
-    }
-  )
+  newEntry.save();
+
+//   User.updateOne({_id:
+//      userId
+//   }, {
+//     $push: {
+//       "writings" : newEntry
+//       }
+//     },function(err){
+//       if(err)
+// {
+//   console.log(err);
+// }
+//     }
+//   )
   res.redirect("/dashboard");
 });
 
