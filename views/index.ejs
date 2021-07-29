@@ -16,13 +16,13 @@
     </div>
 
     <div class ="prompt-section">
-      <h1><%=todaysPrompt%></h1>
+      <h1 onload="this.from.submit()"><%=todaysPrompt%></h1>
     </div>
 
 
     <div class="writing-area">
       <form class="" action="/index" method="post">
-        <input class = "entry-title" type="text" name="writingTitle" value="" required placeholder="Title">
+        <input class = "entry-title" type="text" name="writingTitle" required placeholder="Title">
         <textarea class= "entry" name="writingContent" rows="25" cols="95" required placeholder="Don't think too much, just start..."></textarea>
         <button class = "finish-button" type="submit" name="button"><b>Finish</b></button>
       </form>

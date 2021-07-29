@@ -43,6 +43,12 @@ body{
   padding: 2rem 0 0 3rem;
   color: #fff;
 }
+.logout-button
+{
+  color: black;
+  margin-left: 19rem;
+}
+
 .start-button{
 
 
@@ -53,7 +59,7 @@ body{
 }
 
 a{
-  color: #fff;
+  /* color: #fff; */
   text-decoration: none;
   font-family: 'Raleway', sans-serif;
   font-size: 1.5rem;
@@ -81,4 +87,9 @@ margin-top: 2rem;
   border-width: thin;
   margin:1rem;
   padding: 2rem;
+}
+
+.edit{
+  color: #7c9473 ;
+  margin: auto;
 }

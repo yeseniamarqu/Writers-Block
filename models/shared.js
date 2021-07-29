@@ -5,7 +5,8 @@ const sharedSchema = new mongoose.Schema({
   user: String,
   date: String,
   title: String,
-  content: String
+  content: String,
+  comments: []
 });
 
 const myDB = mongoose.connection.useDb('writingDB');

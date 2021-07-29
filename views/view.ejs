@@ -1,0 +1,15 @@
+<%-include('partials/header') -%>
+
+<body>
+ <h1><%=sharedTitle%></h1>
+  <p><%=sharedContent%></p>
+  <p><%=sharedUsername%></p>
+  <p><%=sharedDate%></p>
+
+  <form class="" action="/view" method="post">
+    <label for="comments">Comments</label>
+    <textarea name="comments" rows="8" cols="80" placeholder = "Write a comment..."></textarea>
+      <button type="submit" name=""><i class="fas fa-comment-medical"></i></button>
+  </form>
+
+</body>

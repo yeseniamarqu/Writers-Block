@@ -1,0 +1,17 @@
+<%-include('partials/header')-%>
+<link rel="stylesheet" href="css/stylesDashboard.css">
+<body>
+  <h1>Hello</h1>
+<% pastWritings = pastWritings.reverse() %>
+  <%pastWritings.forEach(function(w){ %>
+    <div class="shared-writing">
+      <h1><%=w.title%></h1>
+      <p><%=w.content%></p>
+      <p><%=w.date%></p>
+      <% link = w.title.toLowerCase()%>
+      <a class ="edit" href="/journal/<%=link%>"><i class="fas fa-pencil-alt"></i>Edit</a>
+
+    </div>
+  <%})%>
+</body>
+</html>

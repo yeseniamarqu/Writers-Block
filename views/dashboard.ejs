@@ -1,7 +1,7 @@
   <%-include('partials/header')-%>
     <link rel="stylesheet" href="css/stylesDashboard.css">
 
-  </head>
+
   <body>
 
 
@@ -9,7 +9,7 @@
   <div class="nav-bar-items">
 
  <a class= "start-button"href="/index">Start</a>
- <a class ="nav-item" href="#">Past Writings</a>
+ <a class ="nav-item" href="/writings">Past Writings</a>
  <a class ="nav-item"href="">Journal</a>
 
   </div>
@@ -18,25 +18,33 @@
 </nav>
 <nav class = "top">
   <h1 class="name"><i class="fas fa-cubes"></i>WritersBlock</h1>
-  <a href="#">Logout</a>
+  <a class ="start-button logout-button" href="/logout">Logout</a>
 </nav>
 <div class="right-side">
   <div class="feed">
 
+<%writings = writings.reverse() %>
+
+
 
 <% writings.forEach(function(writing){ %>
   <div class="shared-writing">
-    <h1><%=writing.title%></h1>
-    <p><%=writing.user%></p>
-    <p><%=writing.content%></p>
-    <p><%=writing.date%></p>
+    <h1 name = "title" ><%=writing.title%></h1>
+    <% link = writing._id%>
+    <%console.log(link)%>
+    <p name = "username" > <%=writing.user%></p>
+    <p name = "content"><%=writing.content%> </p>
+    <p name = "date"><%=writing.date%></p>
+    <a href="/view/<%=link%>">View</a>
+
+
+
   </div>
 <%})%>
 
   </div>
 </div>
-
-  </body>
+</body>
 </html>
 
 

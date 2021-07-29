@@ -1,0 +1,24 @@
+<%-include('partials/header') -%>
+<link rel="stylesheet" href="css/styles.css">
+
+<body>
+  <div class="header">
+    <header>
+      <a href="/dashboard" class="title"><i class="fas fa-cubes"></i>WritersBlock</a>
+
+    </header>
+  </div>
+
+  <div class="writing-area">
+
+
+    <form class="" action="/journal" method="post">
+
+      <input class="entry-title" type="text" name="title" value=<%=writingTitle%>>
+      <textarea class="entry" name="content"><%=writingContent%></textarea>
+      <button class="finish-button" type="submit" name="publish-button">Publish</button>
+      <button class="finish-button" type="submit" name="save-button">Save</button>
+    </form>
+  </div>
+
+</body>
