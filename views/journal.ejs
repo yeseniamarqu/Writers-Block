@@ -15,6 +15,7 @@
     <form class="" action="/journal" method="post">
 
       <input class="entry-title" type="text" name="title" value=<%=writingTitle%>>
+      <input type="hidden" name="id" value= <%=writingId%> readonly>
       <textarea class="entry" name="content"><%=writingContent%></textarea>
       <button class="finish-button" type="submit" name="publish-button">Publish</button>
       <button class="finish-button" type="submit" name="save-button">Save</button>

@@ -27,7 +27,7 @@ let sharedJournals = [];
 writingTitle = "";
 writingContent = "";
 writingDate = "";
-currentUser ='';
+currentUser = '';
 
 
 app.set('view engine', 'ejs');
@@ -184,54 +184,57 @@ app.get('/dashboard', function(req, res) {
 });
 
 app.get("/writings", function(req, res) {
- var w = []
-  User.find({
-    "_id": userId
-  }, function(err, writings) {
+
+  Journal.find({
+    "author": userId
+  }, function(err, entries) {
     if (err) {
       console.log(err);
     } else {
-      currentUser = writings.name
-      pastJournals = writings[0].writings
-     res.render("writings", {pastWritings: pastJournals})
+      pastJournals = entries
+      res.render("writings", {
+        pastWritings: entries
+      })
     }
-  });
+
+  })
 
 });
 
 
-app.get("/journal/:writingTitle", function(req,res){
-  let requestedWriting = _.replace(req.params.writingTitle,'-',' ');
-  pastJournals.forEach(function(pastJournal){
+app.get("/journal/:id", function(req, res) {
+   pastJournals.forEach(function(pastJournal) {
     storedTitle = _.lowerCase(pastJournal.title);
     storedWriting = pastJournal.content;
     storedDate = pastJournal.date;
+    storedId = pastJournal._id;
 
-    if(requestedWriting === storedTitle){
-      res.render('journal',{
+    if (req.params.id == storedId) {
+      res.render('journal', {
         writingTitle: storedTitle,
         writingContent: storedWriting,
-        writingDate: storedDate
+        writingDate: storedDate,
+        writingId : storedId
       });
     }
   });
 
 });
 
-app.get("/view/:ID", function(req,res){
+app.get("/view/:ID", function(req, res) {
   console.log(req.params.ID)
-    sharedJournals.forEach(function(sharedJournal){
+  sharedJournals.forEach(function(sharedJournal) {
     sharedDBTitle = sharedJournal.title;
     sharedDBJournal = sharedJournal.content;
     sharedDBDate = sharedJournal.date;
     sharedDBUsername = sharedJournal.username;
     sharedID = sharedJournal._id;
-    if(req.params.ID == sharedID){
+    if (req.params.ID == sharedID) {
       res.render('view', {
-        sharedTitle:sharedDBTitle,
+        sharedTitle: sharedDBTitle,
         sharedUsername: sharedDBUsername,
-        sharedContent : sharedDBJournal,
-        sharedDate : sharedDBDate
+        sharedContent: sharedDBJournal,
+        sharedDate: sharedDBDate
       });
     }
   })
@@ -274,46 +277,36 @@ app.post("/register", function(req, res) {
 });
 
 
-app.post("/journal", function(req,res){
+app.post("/journal", function(req, res) {
 
-  if(req.body.hasOwnProperty("publish-button"))
-  {
-      const sharedWriting = new Shared({
-        user: currentUser,
-        date: day,
-        title: req.body.title,
-        content: req.body.content
-     });
-     sharedWriting.save();
-     res.redirect("/dashboard");
-}
-   // }});
+  if (req.body.hasOwnProperty("publish-button")) {
+    const sharedWriting = new Shared({
+      user: currentUser,
+      date: day,
+      title: req.body.title,
+      content: req.body.content
+    });
+    sharedWriting.save();
+    res.redirect("/dashboard");
+  }
+  // }});
 
-if(req.body.hasOwnProperty("save-button"))
-{
-  User.updateOne({'_id' : userId, "writings[0].writings._id" : 0}, {'$set' : {
-    "writings.$[5][title]" : req.body.title,
-    "writings.$[5][content]" : req.body.content
-  }}, function(err){
-    if(err){
-      console.log(err)
-    }else{
-      console.log("good")
-      console.log(userId)
+  if (req.body.hasOwnProperty("save-button")) {
+    Journal.updateOne({
+      _id : mongoose.Types.ObjectId(req.body.id),
+    }, { 'title' : req.body.title,
+          'content': req.body.content,
+           'date': today
+        }, function(err){
+          if(err){
+            console.log(err)
+          }
+        });
 
-      res.redirect('/dashboard')
-    }
-  })
+    res.redirect("/writings");
+}});
 
-}
-
-
-
-
-});
-
-
-app.post("/view",function(req,res){
+app.post("/view", function(req, res) {
 
 
 
@@ -331,24 +324,10 @@ app.post("/index", function(req, res) {
   });
 
   newEntry.save();
-
-//   User.updateOne({_id:
-//      userId
-//   }, {
-//     $push: {
-//       "writings" : newEntry
-//       }
-//     },function(err){
-//       if(err)
-// {
-//   console.log(err);
-// }
-//     }
-//   )
   res.redirect("/dashboard");
 });
 
-app.get("/logout", function(req,res){
+app.get("/logout", function(req, res) {
   req.logout();
   res.redirect("/");
 });
