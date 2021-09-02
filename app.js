@@ -5,6 +5,7 @@ const ObjectID = require('mongodb')
 const ejs = require('ejs');
 const app = express();
 const {
+  Comment,
   Journal,
   Prompt,
   Shared
@@ -60,7 +61,7 @@ const userSchema = new mongoose.Schema({
   googleId: String,
   facebookId: String,
   secret: String,
-  writings: []
+
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -228,9 +229,13 @@ app.get("/view/:ID", function(req, res) {
     sharedDBJournal = sharedJournal.content;
     sharedDBDate = sharedJournal.date;
     sharedDBUsername = sharedJournal.username;
-    sharedID = sharedJournal._id;
-    if (req.params.ID == sharedID) {
+    sharedDBauthorId = sharedJournal.authorID;
+    sharedDBId = sharedJournal._id
+
+    if (req.params.ID == sharedDBId) {
       res.render('view', {
+        sharedId : sharedDBId,
+        sharedAuthorId: sharedDBauthorId,
         sharedTitle: sharedDBTitle,
         sharedUsername: sharedDBUsername,
         sharedContent: sharedDBJournal,
@@ -281,6 +286,7 @@ app.post("/journal", function(req, res) {
 
   if (req.body.hasOwnProperty("publish-button")) {
     const sharedWriting = new Shared({
+      authorID: userId,
       user: currentUser,
       date: day,
       title: req.body.title,
@@ -289,7 +295,6 @@ app.post("/journal", function(req, res) {
     sharedWriting.save();
     res.redirect("/dashboard");
   }
-  // }});
 
   if (req.body.hasOwnProperty("save-button")) {
     Journal.updateOne({
@@ -307,11 +312,28 @@ app.post("/journal", function(req, res) {
 }});
 
 app.post("/view", function(req, res) {
+    console.log("*************")
+    console.log(req.body.authorId)
+    console.log("***************")
+    console.log(req.body.sharedId)
+    console.log("****************")
+    const newComment = new Comment({
+    sharedID: req.body.sharedId,
+    authorID: req.body.authorId,
+    posterID: userId,
+    comment: req.body.comments,
+    author: currentUser,
+    time: today
+  }, function(err){
+    if(err){
+      console.log(err);
+    }
+  });
 
+newComment.save();
 
-
-
-})
+res.redirect("/dashboard");
+});
 
 
 

@@ -1,75 +1,79 @@
 <%-include('partials/header')-%>
-    <link rel="stylesheet" href="css/stylesLR.css">
+<!-- <link rel="stylesheet" href="css/stylesLR.css"> -->
 
-  </head>
-  <body>
-<div class="big-container container-left">
-    <h1 class="title"><i class="fas fa-cubes"></i>WritersBlock</h1>
-    <p>3 minute daily journaling to help with <br> WritersBlock</p>
-</div>
+<link rel="stylesheet" href="css/loginStyles.css">
+
+</head>
+
+<body>
+  <div class="outter-container container-left">
+    <div class="inside-container">
+      <div class="image-side">
+        <img class="journal-img" src="images/journal.png" alt="">
+      </div>
+
+      <div class="login-side">
+
+        <div class="login">
+
+          <div class="title">
+            <h1 class="wb-title"><i class="fas fa-cubes"></i>WritersBlock</h1>
+            <p class="title-desc">3 minute daily journaling to help with WritersBlock</p>
+          </div>
+
+
+          <div class="login-text">
+            <h1 class="action-text">Login</h1>
 
 
 
+            <!-- Makes POST request to /login route -->
 
-<div class="big-container container-right">
+          <div class="login-form">
 
 
-<div class="container mt-5">
-  <h1 class= "login-text">Login</h1>
-
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card">
-        <div class="card-body">
-
-          <!-- Makes POST request to /login route -->
-          <form action="/login" method="POST">
-            <div class="form-group">
-              <input type="email" class="form-control entry" name="username" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <input type = "password" class = "form-control entry" name="password" placeholder="Password">
-            </div>
-            <button type="submit" class="signin-button">Login</button>
-            <!-- <button type="submit"class = "signin-button" href="/register"> Register</button> -->
-            <!-- <a class= "signin-button" href="/register">Register</a> -->
-            <a class="reg-button" href="/register">Resgister</a>
-
-          </form>
+            <form action="/login" method="POST">
+              <div class="form-group">
+                <input type="email" class="form-control entry" name="username" placeholder="Email">
               </div>
+              <div class="form-group">
+                <input type="password" class="form-control entry" name="password" placeholder="Password">
               </div>
-          <!-- <form class= "reg" action="/register" method="post">
-            <button type ="submit"  class="signin-button g-fb-login">Register</button>
-          </form> -->
-    <!-- </div> -->
+              <a class="register-buttn buttns" href="/register">Register</a>
+              <button type="submit" class="login-buttn buttns">Login</button>
 
-    <!-- </div> -->
-    </div>
 
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-body">
-          <a class="website-button google-button" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign In with Google
-          </a>
+            </form>
         </div>
-        <div class="card-body">
-          <a class="website-button fb-button" href="/auth/facebook" role="button">
-            <i class="fab fa-facebook"></i>
-            Sign In with Facebook
-          </a>
+
+            <!-- social logins -->
+            <div class="social-login">
+
+
+            <a class="socials-buttn google-button" href="/auth/google" role="button">
+              <i class="fab fa-google"></i>
+              Sign In with Google
+            </a>
+
+
+            <a class="socials-buttn fb-button" href="/auth/facebook" role="button">
+              <i class="fab fa-facebook"></i>
+              Sign In with Facebook
+            </a>
+
+          </div>
+          <!-- social logins     -->
+
+
+
+
+
+
         </div>
       </div>
+
     </div>
 
-  </div>
-</div>
-
-
-
-
-</div>
-
 </body>
+
 </html>

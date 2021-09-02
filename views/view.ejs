@@ -7,6 +7,8 @@
   <p><%=sharedDate%></p>
 
   <form class="" action="/view" method="post">
+    <input type="hidden" name="sharedId" value= <%=sharedId%> >
+    <input type="hidden" name="authorId" value= <%=sharedAuthorId%> >
     <label for="comments">Comments</label>
     <textarea name="comments" rows="8" cols="80" placeholder = "Write a comment..."></textarea>
       <button type="submit" name=""><i class="fas fa-comment-medical"></i></button>

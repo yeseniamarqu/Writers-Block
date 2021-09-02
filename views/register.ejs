@@ -1,55 +1,65 @@
 <%-include('partials/header') -%>
-    <link rel="stylesheet" href="css/stylesLR.css">
+    <link rel="stylesheet" href="css/registerStyles.css">
+    <link rel="stylesheet" href="/css/loginStyles.css">
   </head>
   <body>
-    <div class="container mt-5">
-      <h1 class = "title">Register</h1>
 
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="card">
-            <div class="card-body">
+
+
+        <div class="outter-container">
+            <div class="inside-container">
+              <h1 class="reg-title wbt"><i class="fas fa-cubes"></i>WritersBlock</h1>
+
+
+              <div class="login-block">
+                <div class="title-container sizing">
+                <h1 class = "reg-title" >Register</h1>
+                </div>
+                <div class="form-container sizing">
+
 
               <!-- Makes POST request to /register route -->
               <form action="/register" method="POST">
                 <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="name" class="form-control" name="name">
+
+                  <input type="name" class="form-control" name="name" placeholder="Name">
                 </div>
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" name="username">
+
+                  <input type="email" class="form-control" name="username" placeholder="Email">
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password">
+
+                  <input type="password pword" class="form-control" name="password" placeholder="Password">
                 </div>
-                <button type="submit" class="btn btn-dark">Register</button>
+                <button type="submit" class="btn-dark">Register</button>
               </form>
-
             </div>
-          </div>
-        </div>
 
-        <div class="col-sm-4">
-          <div class="card social-block">
-            <div class="card-body">
-              <a class="btn btn-block btn-social btn-google" href="/auth/google" role="button">
+
+
+
+          <div class=" socials-container sizing">
+
+              <a class="socials-button r-google" href="/auth/google" role="button">
                 <i class="fab fa-google"></i>
                 Sign Up with Google
               </a>
-            </div>
-            <div class="card-body">
-              <a class="btn btn-block btn-social btn-facebook" href="/auth/facebook" role="button">
+
+
+              <a class="socials-button fb-button r-facebook" href="/auth/facebook" role="button">
                 <i class="fab fa-facebook"></i>
                 Sign Up with Facebook
               </a>
-            </div>
+
           </div>
         </div>
-
+        <div class="pencil">
+        <img class="pencil-img" src="images/pencil.png" alt="pencil_img">
+        </div>
       </div>
-    </div>
+  </div>
+
 
   </body>
 </html>

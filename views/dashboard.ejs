@@ -1,27 +1,30 @@
   <%-include('partials/header')-%>
-    <link rel="stylesheet" href="css/stylesDashboard.css">
-
-
+    <link rel="stylesheet" href="css/dashboardStyles.css">
   <body>
 
 
-<nav class="left-side">
+
+    <div class = "top">
+      <h1 class="name"><i class="fas fa-cubes"></i>WritersBlock</h1>
+      <a class ="button-style logout-button" href="/logout">Log Out</a>
+    </div>
+
   <div class="nav-bar-items">
-
- <a class= "start-button"href="/index">Start</a>
- <a class ="nav-item" href="/writings">Past Writings</a>
- <a class ="nav-item"href="">Journal</a>
-
+      <h1 class="fas fa-cubes block"></h1>
+      <a class= "button-style start-button nav-item" href="/index">  Start</a>
+      <a class ="nav-item" href="/writings">Past Entries</a>
+      <a class ="nav-item"href="/freeJournaling">Draft</a>
   </div>
 
 
-</nav>
-<nav class = "top">
-  <h1 class="name"><i class="fas fa-cubes"></i>WritersBlock</h1>
-  <a class ="start-button logout-button" href="/logout">Logout</a>
-</nav>
+
+
+
+
 <div class="right-side">
-  <div class="feed">
+<h1>HELLO</h1>
+    <div class="feed">
+
 
 <%writings = writings.reverse() %>
 
@@ -35,17 +38,15 @@
     <p name = "username" > <%=writing.user%></p>
     <p name = "content"><%=writing.content%> </p>
     <p name = "date"><%=writing.date%></p>
-    <a href="/view/<%=link%>">View</a>
-
-
+    <a class = "view-button button-style" name="button" href="/view/<%=link%>">View</a>
 
   </div>
 <%})%>
 
   </div>
 </div>
+
 </body>
-</html>
 
 
 <!-- client id : 858351013669-5rnph2e3rt4gghm4qa6gabfu7f591cts.apps.googleusercontent.com
