@@ -1,53 +1,109 @@
   <%-include('partials/header')-%>
-    <link rel="stylesheet" href="css/dashboardStyles.css">
+
+
+  <link rel="stylesheet" href="css/journals.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboardStyles.css">
+
   <body>
 
+    <div class="big-container">
+
+        <div class="header-container top">
+          <a href="/dashboard" class="title"><i class="fas fa-cubes"></i>WritersBlock</a>
+          <a class = "logout-button" href="/logout">Log Out</a>
+        </div>
+
+      <div class="body-container">
 
 
-    <div class = "top">
-      <h1 class="name"><i class="fas fa-cubes"></i>WritersBlock</h1>
-      <a class ="button-style logout-button" href="/logout">Log Out</a>
+        <div class="nav-bar-items">
+
+          <a class="button-style start-button nav-item" href="/index"> Start</a>
+          <a class="nav-item" href="/writings">Past Entries</a>
+          <a class="nav-item" href="/freeJournaling">Draft</a>
+        </div>
+        <div class="top-right">
+
+
+
+          <h1 class="greeting">Hello <%=name%>!</h1>
+
+          <div class="mood-container">
+
+            <div class="box mood-box">
+
+
+              <div class="new-item">
+
+               <h2>How are you feeling?</h2>
+                <form class="item" action="/journal" method="post">
+                  <textarea class="task-line" type="text" name="content" autocomplete="off"></textarea>
+                  <button class=" add-button share-button" type="submit" name="publish-button" >Share</button>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="box-container">
+
+            <h1> Task List </h1>
+            <div class="box">
+
+              <div class="new-item">
+
+
+                <form class="item" action="/todo" method="post">
+                  <input type="text" name="newItem" autocomplete="off">
+                  <button class="add-button" type="submit" name="listType" name="button"><i class="fas fa-plus-circle plus"></i></button>
+                </form>
+
+              </div>
+              <div class="old-items">
+
+                <% todos.forEach(function(todo){ %>
+                <form action="/delete" method="post">
+                  <div class="item">
+                    <input type="checkbox" name="checkItem" value="<%=todo._id %>" onChange="this.form.submit()">
+                    <p class="todo-item"> <%= todo.name %> </p>
+                  </div>
+                  <input type="hidden" name="listName"></input>
+                </form>
+                <% }); %>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <%writings = writings.reverse() %>
+
+
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <div class="right-bottom">
+
+
+
+          <% writings.forEach(function(writing){ %>
+          <div class="shared-writing journals">
+            <h1 name="title"><%=writing.title%></h1>
+            <% link = writing._id%>
+            <%console.log(link)%>
+            <p name="username"> <%=writing.user%></p>
+            <p name="content"><%=writing.content%> </p>
+            <p name="date"><%=writing.date%></p>
+            <a class="btton" name="button" href="/view/<%=link%>">View</a>
+
+          </div>
+          <%})%>
+
+        </div>
+
+      </div>
     </div>
 
-  <div class="nav-bar-items">
-      <h1 class="fas fa-cubes block"></h1>
-      <a class= "button-style start-button nav-item" href="/index">  Start</a>
-      <a class ="nav-item" href="/writings">Past Entries</a>
-      <a class ="nav-item"href="/freeJournaling">Draft</a>
-  </div>
-
-
-
-
-
-
-<div class="right-side">
-<h1>HELLO</h1>
-    <div class="feed">
-
-
-<%writings = writings.reverse() %>
-
-
-
-<% writings.forEach(function(writing){ %>
-  <div class="shared-writing">
-    <h1 name = "title" ><%=writing.title%></h1>
-    <% link = writing._id%>
-    <%console.log(link)%>
-    <p name = "username" > <%=writing.user%></p>
-    <p name = "content"><%=writing.content%> </p>
-    <p name = "date"><%=writing.date%></p>
-    <a class = "view-button button-style" name="button" href="/view/<%=link%>">View</a>
-
-  </div>
-<%})%>
-
-  </div>
-</div>
-
-</body>
-
-
-<!-- client id : 858351013669-5rnph2e3rt4gghm4qa6gabfu7f591cts.apps.googleusercontent.com
-client secret: aAvosNTWRXWouwI2RyARdfQN -->
+  </body>

@@ -1,0 +1,79 @@
+<%-include('partials/header')-%>
+<!-- <link rel="stylesheet" href="css/stylesLR.css"> -->
+
+<link rel="stylesheet" href="css/loginStyles.css">
+
+</head>
+
+<body>
+  <div class="outter-container container-left">
+    <div class="inside-container">
+      <div class="image-side">
+        <img class="journal-img" src="images/journal.png" alt="">
+      </div>
+
+      <div class="login-side">
+
+        <div class="login">
+
+          <div class="title">
+            <h1 class="wb-title"><i class="fas fa-cubes"></i>WritersBlock</h1>
+            <p class="title-desc">3 minute daily journaling to help with WritersBlock</p>
+          </div>
+
+
+          <div class="login-text">
+            <h1 class="action-text">wowowowowowo</h1>
+
+
+
+            <!-- Makes POST request to /login route -->
+
+          <div class="login-form">
+
+
+            <form action="/login" method="POST">
+              <div class="form-group">
+                <input type="email" class="form-control entry" name="username" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control entry" name="password" placeholder="Password">
+              </div>
+              <a class="register-buttn buttns" href="/register">Register</a>
+              <button type="submit" class="login-buttn buttns">Login</button>
+
+
+            </form>
+        </div>
+
+            <!-- social logins -->
+            <div class="social-login">
+
+
+            <a class="socials-buttn google-button" href="/auth/google" role="button">
+              <i class="fab fa-google"></i>
+              Sign In with Google
+            </a>
+
+
+            <a class="socials-buttn fb-button" href="/auth/facebook" role="button">
+              <i class="fab fa-facebook"></i>
+              Sign In with Facebook
+            </a>
+
+          </div>
+          <!-- social logins     -->
+
+
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+
+</body>
+
+</html>

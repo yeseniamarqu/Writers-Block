@@ -1,25 +1,37 @@
-<%-include('partials/header') -%>
-<link rel="stylesheet" href="css/styles.css">
-
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Writers Block</title>
+    <link rel="icon" href="images/writerblocklogo.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/6ffe9012a7.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=The+Girl+Next+Door&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/css/styles.css">
+   <link rel="stylesheet" href="/css/journals.css">
+</head>
 <body>
-  <div class="header">
-    <header>
+  <div class="big-container">
+    <div class="header-container top">
       <a href="/dashboard" class="title"><i class="fas fa-cubes"></i>WritersBlock</a>
-
-    </header>
-  </div>
+      <a class = "logout-button" href="/logout">Log Out</a>
+    </div>
 
   <div class="writing-area">
 
 
-    <form class="" action="/journal" method="post">
+    <form  action="/journal" method="post">
 
       <input class="entry-title" type="text" name="title" value=<%=writingTitle%>>
       <input type="hidden" name="id" value= <%=writingId%> readonly>
       <textarea class="entry" name="content"><%=writingContent%></textarea>
-      <button class="finish-button" type="submit" name="publish-button">Publish</button>
-      <button class="finish-button" type="submit" name="save-button">Save</button>
+      <button class="btton save-button" type="submit" name="save-button">Save</button>
+      <button class="btton publish-button" type="submit" name="publish-button">Publish</button>
     </form>
   </div>
 
+</div>
 </body>

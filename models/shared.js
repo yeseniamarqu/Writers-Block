@@ -6,7 +6,6 @@ const sharedSchema = new mongoose.Schema({
   date: String,
   title: String,
   content: String,
-  comments: [],
   authorID: mongoose.ObjectId
 });
 

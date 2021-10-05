@@ -9,7 +9,7 @@ body{
   width: 250px;
   height: 100%;
   background-color: #7c9473;
-  background-image: url("https://www.transparenttextures.com/patterns/lined-paper.png");
+
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5);
 }
 
@@ -58,7 +58,7 @@ body{
   border-width: thin;
 }
 
-a{
+ a{
   /* color: #fff; */
   text-decoration: none;
   font-family: 'Raleway', sans-serif;

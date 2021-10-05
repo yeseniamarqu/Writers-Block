@@ -1,14 +1,16 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const ObjectID = require('mongodb')
+const ObjectID = require('mongodb');
 const ejs = require('ejs');
 const app = express();
 const {
   Comment,
   Journal,
   Prompt,
-  Shared
+  Shared,
+  Task,
+
 } = require("./models")
 const date = require("./models")
 const bodyParser = require("body-parser");
@@ -25,17 +27,20 @@ let promptArr = [];
 let userId = "";
 let pastJournals = [];
 let sharedJournals = [];
-writingTitle = "";
-writingContent = "";
-writingDate = "";
-currentUser = '';
+let writingTitle = "";
+let writingContent = "";
+let writingDate = "";
+let currentUser = '';
+let userInfo = {};
+let postComments = {}
 
 
 app.set('view engine', 'ejs');
-app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(express.static("public"));
 
 day = today.toLocaleDateString("en-us", date.Options)
 
@@ -71,7 +76,8 @@ const User = new mongoose.model('User', userSchema);
 passport.use(User.createStrategy()); //use passport to create local login localStrategy
 
 passport.serializeUser(function(user, done) {
-  userId = String(user.id)
+  userInfo = user;
+  userId = String(user.id);
   done(null, user.id);
 });
 
@@ -117,6 +123,11 @@ passport.use(new FacebookStrategy({
 app.get("/", function(req, res) {
   res.render("login")
 });
+app.get("/freeJournaling", function(req, res) {
+  res.render("freeJournaling", {
+    name: currentUser
+  })
+})
 app.get("/auth/google",
   passport.authenticate("google", {
     scope: ["profile"]
@@ -124,7 +135,7 @@ app.get("/auth/google",
 );
 app.get("/auth/google/dashboard",
   passport.authenticate("google", {
-    failureRedirect: "/login"
+    failureRedirect: "/failedlogin"
   }),
   function(req, res) {
     res.redirect("/dashboard");
@@ -136,7 +147,7 @@ app.get("/auth/facebook",
 
 app.get("/auth/facebook/dashboard",
   passport.authenticate('facebook', {
-    failureRedirect: "/login"
+    failureRedirect: "/failedlogin"
   }),
   function(req, res) {
     res.redirect('/dashboard');
@@ -172,13 +183,28 @@ app.get('/register', function(req, res) {
 
 app.get('/dashboard', function(req, res) {
 
+
+  let todo = '';
+  Task.find(function(err, tasks) {
+    if (err) {
+      console.log(err)
+    } else {
+      todo = tasks;
+    }
+  })
+
+
+
   Shared.find(function(err, shared) {
     if (err) {
       console.log(err);
     } else {
       sharedJournals = shared;
       res.render("dashboard", {
-        writings: shared
+        name: userInfo.name,
+        writings: shared,
+        todos: todo
+
       });
     }
   });
@@ -204,7 +230,7 @@ app.get("/writings", function(req, res) {
 
 
 app.get("/journal/:id", function(req, res) {
-   pastJournals.forEach(function(pastJournal) {
+  pastJournals.forEach(function(pastJournal) {
     storedTitle = _.lowerCase(pastJournal.title);
     storedWriting = pastJournal.content;
     storedDate = pastJournal.date;
@@ -215,7 +241,7 @@ app.get("/journal/:id", function(req, res) {
         writingTitle: storedTitle,
         writingContent: storedWriting,
         writingDate: storedDate,
-        writingId : storedId
+        writingId: storedId
       });
     }
   });
@@ -223,27 +249,35 @@ app.get("/journal/:id", function(req, res) {
 });
 
 app.get("/view/:ID", function(req, res) {
-  console.log(req.params.ID)
+
   sharedJournals.forEach(function(sharedJournal) {
     sharedDBTitle = sharedJournal.title;
     sharedDBJournal = sharedJournal.content;
     sharedDBDate = sharedJournal.date;
     sharedDBUsername = sharedJournal.username;
     sharedDBauthorId = sharedJournal.authorID;
-    sharedDBId = sharedJournal._id
+    sharedDBId = sharedJournal._id;
+
 
     if (req.params.ID == sharedDBId) {
+
       res.render('view', {
-        sharedId : sharedDBId,
+        sharedId: sharedDBId,
         sharedAuthorId: sharedDBauthorId,
         sharedTitle: sharedDBTitle,
         sharedUsername: sharedDBUsername,
         sharedContent: sharedDBJournal,
-        sharedDate: sharedDBDate
+        sharedDate: sharedDBDate,
+
+
       });
     }
-  })
+  });
 });
+
+app.get('/failedlogin', function(req,res){
+  res.render('failedlogin');
+})
 
 
 
@@ -255,6 +289,7 @@ app.post('/login', function(req, res) {
   });
   req.login(user, function(err) {
     if (err) {
+      res.redirect('/failedlogin')
       console.log(err);
     } else {
       userId = String(user.id)
@@ -267,14 +302,15 @@ app.post('/login', function(req, res) {
 
 app.post("/register", function(req, res) {
   User.register({
-    username: req.body.username
+    username: req.body.username,
+    name: req.body.name,
   }, req.body.password, function(err, user) {
     if (err) {
       console.log(err);
       res.redirect("/register");
     } else {
       passport.authenticate("local")(req, res, function() {
-        res.redirect("/dashboard");
+        res.redirect("/");
       })
     }
 
@@ -298,43 +334,53 @@ app.post("/journal", function(req, res) {
 
   if (req.body.hasOwnProperty("save-button")) {
     Journal.updateOne({
-      _id : mongoose.Types.ObjectId(req.body.id),
-    }, { 'title' : req.body.title,
-          'content': req.body.content,
-           'date': today
-        }, function(err){
-          if(err){
-            console.log(err)
-          }
-        });
+      _id: mongoose.Types.ObjectId(req.body.id),
+    }, {
+      'title': req.body.title,
+      'content': req.body.content,
+      'date': today
+    }, function(err) {
+      if (err) {
+        console.log(err)
+      }
+    });
 
     res.redirect("/writings");
-}});
-
-app.post("/view", function(req, res) {
-    console.log("*************")
-    console.log(req.body.authorId)
-    console.log("***************")
-    console.log(req.body.sharedId)
-    console.log("****************")
-    const newComment = new Comment({
-    sharedID: req.body.sharedId,
-    authorID: req.body.authorId,
-    posterID: userId,
-    comment: req.body.comments,
-    author: currentUser,
-    time: today
-  }, function(err){
-    if(err){
-      console.log(err);
-    }
-  });
-
-newComment.save();
-
-res.redirect("/dashboard");
+  }
 });
 
+
+
+app.post("/delete", function(req, res) {
+
+  let taskID = req.body.checkItem;
+  Task.deleteOne({
+      _id: taskID
+    },
+    function(err) {
+      if (err) {
+        console.log(err);
+      }
+
+    });
+  res.redirect('/dashboard');
+
+});
+
+app.post("/todo", function(req, res) {
+  const newTask = new Task({
+    name: req.body.newItem
+  }, function(err) {
+    if (err) {
+      console.log(err);
+    }
+
+  });
+
+  newTask.save();
+
+  res.redirect("/dashboard");
+});
 
 
 app.post("/index", function(req, res) {

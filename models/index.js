@@ -3,5 +3,6 @@ Journal:require("./journals"),
 Comment: require("./comments"),
 Shared:require("./shared"),
 Prompt: require("./prompts"),
-Options: require("./date")
+Options: require("./date"),
+Task: require("./tasks")
 };

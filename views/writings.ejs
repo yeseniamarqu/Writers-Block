@@ -1,18 +1,38 @@
 <%-include('partials/header')-%>
-<link rel="stylesheet" href="css/stylesDashboard.css">
-<body>
-  <h1>Hello</h1>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/journals.css">
+
+  <body>
+
+      <div class="big-container">
+
+
+        <div class="header-container">
+
+            <a href="/dashboard" class="title"><i class="fas fa-cubes"></i>WritersBlock</a>
+
+        </div>
+
+
+        <div class="body-container">
+          <div class="page-title">
+            <h1>Past Journal Entries</h1>
+
+          </div>
+
 <% pastWritings = pastWritings.reverse() %>
   <%pastWritings.forEach(function(w){ %>
     <div class="shared-writing">
       <h1><%=w.title%></h1>
+      <p class= "journal-date"><%=w.date%></p>
       <p><%=w.content%></p>
-      <p><%=w.date%></p>
       <% link = w._id%>
       <%console.log(link) %>
-      <a class ="edit" href="/journal/<%=link%>"><i class="fas fa-pencil-alt"></i>Edit</a>
+      <a class ="edit finish-button" href="/journal/<%=link%>"><i class="fas fa-pencil-alt"></i>Edit</a>
 
     </div>
   <%})%>
+
+ </div>
+ </div>
 </body>
-</html>

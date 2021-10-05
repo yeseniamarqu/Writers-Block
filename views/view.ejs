@@ -1,17 +1,34 @@
 <%-include('partials/header') -%>
-
+<link href="/css/styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/journals.css">
+<link rel="stylesheet" href="/css/view.css">
 <body>
- <h1><%=sharedTitle%></h1>
-  <p><%=sharedContent%></p>
-  <p><%=sharedUsername%></p>
-  <p><%=sharedDate%></p>
+  <div class="big-container">
+    <div class="header-container top">
+      <a href="/dashboard" class="title"><i class="fas fa-cubes"></i>WritersBlock</a>
+      <a class = "logout-button" href="/logout">Logout</a>
+    </div>
+    <div class="current-journal">
 
-  <form class="" action="/view" method="post">
-    <input type="hidden" name="sharedId" value= <%=sharedId%> >
-    <input type="hidden" name="authorId" value= <%=sharedAuthorId%> >
-    <label for="comments">Comments</label>
-    <textarea name="comments" rows="8" cols="80" placeholder = "Write a comment..."></textarea>
-      <button type="submit" name=""><i class="fas fa-comment-medical"></i></button>
-  </form>
 
+    <div class="journal">
+
+
+     <h1 class = "title"><%=sharedTitle%></h1>
+     <p><%=sharedContent%></p>
+    <p><%=sharedUsername%></p>
+     <p><%=sharedDate%></p>
+    </div>
+  </div>
+<div class="comment-section">
+     <form class="" action="/view" method="post">
+      <input type="hidden" name="sharedId" value= <%=sharedId%> >
+      <input type="hidden" name="authorId" value= <%=sharedAuthorId%> >
+     <textarea class="comment-box"name="comments" rows="8" cols="80" placeholder = "Write a comment..."></textarea>
+     <button class="btton comment-bttn" type="submit" name="">Post</button>
+
+    </form>
+</div>
+
+</div>
 </body>

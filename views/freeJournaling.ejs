@@ -1,28 +1,33 @@
 <%-include('partials/header')-%>
 
-    <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css"
+</head>
+
+<body>
+  <div class="big-container">
 
 
-  <body>
-    <div class="header">
-      <header>
-        <a href="/dashboard" class ="title"><i class="fas fa-cubes"></i>WritersBlock</a>
+    <div class="header-container">
 
-      </header>
+        <a href="/dashboard" class="title"><i class="fas fa-cubes"></i>WritersBlock</a>
+
     </div>
 
-    <div class="date-section">
-      <h1 class ="date"><%= currentDay %></h1>
+
+    <div class="body-container">
+
+      <h1 class="prompt-section">Journal</h1>
+
+
+      <div class="writing-area">
+        <form class="" action="/index" method="post">
+          <input class="entry-title" type="text" name="writingTitle" required placeholder="Title" required>
+          <textarea class="entry" name="writingContent" rows="25" cols="95" required placeholder="Don't think too much, just start..."></textarea>
+          <button class="finish-button btton" type="submit" name="button"><b>Finish</b></button>
+        </form>
+      </div>
     </div>
+  </div>
+</body>
 
-
-
-    <div class="writing-area">
-      <form class="" action="/index" method="post">
-        <input class = "entry-title" type="text" name="writingTitle" required placeholder="Title">
-        <textarea class= "entry" name="writingContent" rows="25" cols="95" required placeholder="Don't think too much, just start..."></textarea>
-        <button class = "finish-button" type="submit" name="button"><b>Finish</b></button>
-      </form>
-    </div>
-
-  </body>
+</html>

@@ -1,99 +1,107 @@
 body{
-  background-color: #fff;
+  font-family: 'The Girl Next Door', cursive;
+  padding: 0;
   margin: 0;
-  font-family: 'Raleway', sans-serif;
-  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
 }
+.big-container{
+  position: relative;
+  height: 100vh;
+  width: 100vw;
 
-.title{
-  font-family: 'Berkshire Swash', cursive;
-  color: #fff;
-  font-size: 2.5rem;
+}
+.logout-button{
+  color: #000;
+  border-color: #fff;
+  padding: 3px 15px;
+  border-style: solid;
+  border-width: thin;
+  position: absolute;
+  top:25%;
+  left: 90%;
+  display: inline-block;
   text-decoration: none;
-}
-header{
-  background-color: #7c9473;
-  margin: auto -16px;
-  padding: 1rem 48px;
-  box-shadow: 0 0 10px 0 rgba(0,0,0,0.3)
-}
 
-.date-section{
-  text-align: center;
-  margin-top: 5rem;
 }
-
-.date{
-  background-color: #7c9473;
-  display: block;
+.logout-button:hover{
   color: #fff;
-  padding: 2rem 0;
-  width: 25rem;
-  margin:auto;
-  border-radius: 2rem;
+}
+.header-container{
+  position:absolute;
+  width: 100%;
+  height: 10%;
+  background-color: #CFDAC8;
+}
+.title{
+  display: inline-block;
+  font-size: 2rem;
+  font-family: 'The Girl Next Door', cursive;
+  color: black;
+  margin-left: 2.5rem;
+  text-decoration: none;
+  margin-top:1rem;
+}
+.body-container{
+  position: absolute;
+  top: 10%;
+  height: 90%;
+  width: 100%;
+}
+
+.refresh-button{
+  font-size: 1.1rem;
+  color:#CFDAC8;
 }
 
 .prompt-section{
-  padding: 1rem 25rem;
-  margin: 0 4rem;
+  top: 5%;
   text-align: center;
+  height: 15%;
+  width: 100%;
+  position: absolute;
 }
-
+.writing-area{
+  font-family: 'Open Sans', sans-serif;
+  position: absolute;
+  width: 100%;
+  height: 85%;
+  top: 20%;
+}
 .entry-title{
-  font-size: 1rem;
-  padding-left: 1rem;
+  outline-color: #E2C2B9;
+  height: 2rem;
+  width: 50%;
+  margin: 1% auto;
   display: block;
-  margin: 1rem auto;
-  align-items: center;
-  font-family: 'Raleway', sans-serif;
-  height: 3rem;
-  width: 51rem;
-  border-radius: 1rem;
-  border-style: solid;
-  border-color: black;
-  border-width: thin;
-
 }
-
-.entry-title:focus{
-  outline: none;
-  box-shadow: 0 0 3pt 2pt #7c9473;
-  font-size: 1rem;
-}
-
-.finish-button{
-  margin: 2rem 0 0 83rem;
-  background-color:#7c9473;
-  color: #fff;
-  width: 6rem;
-  height: 2.5rem;
-  border-style: none;
-  display: block;
-  font-family: 'Raleway', sans-serif;
-  border-radius: .5rem;
-  font-size: 1rem;
-
-}
-
-
-
 .entry{
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  display: block;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
+  outline-color: #E2C2B9;
   resize: none;
-  border-radius: 1rem;
+  width: 50%;
+  height: 30rem;
+  margin: auto;
+  display: block;
+}
+.finish-button{
+margin-left: 68.5%;
+}
+.btton{
+  border-color: #CFDAC8;
+  padding: .5rem 2rem;
+  border-radius: 1px;
   border-style: solid;
-  border-color:black;
-  padding: 2rem;
-
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  color: #000;
+  background-color:#CFDAC8;
+  margin-top: 1%;
+  display: inline-block;
+}
+.finish-button:hover{
+  border-style: solid;
+  border-color: #CFDAC8;
+  background-color: #fff;
 }
 
-.entry:focus{
-  outline: none;
-  box-shadow: 0 0 3pt 2pt #7c9473;
-  padding: 2rem;
+.date{
+  margin:0;
 }
